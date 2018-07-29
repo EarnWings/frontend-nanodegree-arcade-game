@@ -49,8 +49,9 @@ Player.prototype.handleInput = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
+const enemyY = [150, 250, 350];
 for (en = 0; en < 3; en++) {
-	allEnemies[en] = new Enemy(50, 100, 250)
+	allEnemies[en] = new Enemy(50, enemyY[en], 250);
 }
 const player = new Player(50, 100, 'image/char-boy');
 
