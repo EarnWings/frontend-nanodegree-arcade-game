@@ -19,6 +19,7 @@ Enemy.prototype.update = function(dt) {
 	this.x += this.rate * dt;
 	if (this.x > 510) {
 		this.x = -100;
+		this.rate = 150 + Math.random() * 200;
 	}
 };
 
@@ -70,8 +71,8 @@ Player.prototype.handleInput = function(e) {
 let allEnemies = [];
 const enemyY = [60, 145, 230, 310];
 for (en = 0; en < enemyY.length; en++) {
-	let enemySpeed = (this.rate * Math.random * 100);
-	allEnemies.push(new Enemy(-100, enemyY[en], 150));
+	let enemySpeed = (100 + Math.random() * 450);
+	allEnemies.push(new Enemy(-100, enemyY[en], enemySpeed));
 }
 const player = new Player(203, 403);
 
