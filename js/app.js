@@ -16,11 +16,23 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+	
+	//Below recalculates the speed of the enemy once it flows off screen
+	//to the right and also moves it back off the left side to start again
 	this.x += this.rate * dt;
 	if (this.x > 510) {
 		this.x = -100;
 		this.rate = 150 + Math.random() * 200;
 	}
+	
+	//COLLISION DETECTION - if player is close enough to enemy, reset player
+	if (player.x <= this.x + 75 && player.x + 75 >= this.x &&
+		player.y <= this.y + 30 && player.y + 30 >= this.y) {
+			setTimeout(function() {
+				player.x = 203;
+				player.y = 403;
+			}, 40);
+		}
 };
 
 // Draw the enemy on the screen, required method for game
@@ -31,10 +43,10 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-const Player = function(x, y) {
+const Player = function(x, y, character) {
 	this.x = x;
 	this.y = y;
-	this.sprite = 'images/char-cat-girl.png';
+	this.sprite = character;
 }
 
 Player.prototype.update = function() {
@@ -74,7 +86,7 @@ for (en = 0; en < enemyY.length; en++) {
 	let enemySpeed = (100 + Math.random() * 450);
 	allEnemies.push(new Enemy(-100, enemyY[en], enemySpeed));
 }
-const player = new Player(203, 403);
+const player = new Player(203, 403, 'images/char-horn-girl.png');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
