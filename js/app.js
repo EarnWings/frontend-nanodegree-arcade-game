@@ -86,7 +86,7 @@ for (en = 0; en < enemyY.length; en++) {
 	let enemySpeed = (100 + Math.random() * 450);
 	allEnemies.push(new Enemy(-100, enemyY[en], enemySpeed));
 }
-const player = new Player(203, 403, 'images/char-horn-girl.png');
+const player = new Player(203, 403, 'images/char-cat-girl.png');
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
