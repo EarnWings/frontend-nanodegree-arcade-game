@@ -51,7 +51,7 @@ const Player = function(x, y, character) {
 
 Player.prototype.update = function() {
 	if (this.y < 50) {
-		setTimeout( ()=> {
+		setTimeout( () => {
 			this.x = 203;
 			this.y = 403;
 		}, 300);
@@ -63,17 +63,32 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.handleInput = function(e) {
-	if (e === 'left' && this.x >= 50) {
-		this.x -= 100;
+	switch(e) {
+		case 'left':
+			if (this.x >= 50) {
+				this.x -= 100;
+			}
+			break;
+		case 'right':
+			if (this.x <= 400) {
+				this.x += 100;
+			}
+			break;
+		case 'up':
+			if (this.y >= 50) {
+				this.y -= 83;
+			}
+			break;
+		case 'down':
+			if (this.y <= 400) {
+				this.y += 83;
+			}
+			break;
 	}
-	if (e === 'right' && this.x <= 400) {
-		this.x += 100;
-	}
-	if (e === 'up' && this.y >= 50) {
-		this.y -= 83;
-	}
-	if (e === 'down' && this.y <= 400) {
-		this.y += 83;
+	if (this.y < 50) {
+		setTimeout(function() {
+			alert('YOU WIN!')
+		}, 250);
 	}
 }
 
