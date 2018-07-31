@@ -51,9 +51,9 @@ const Player = function(x, y, character) {
 
 Player.prototype.update = function() {
 	if (this.y < 50) {
-		setTimeout(function() {
-			player.x = 203;
-			player.y = 403;
+		setTimeout( ()=> {
+			this.x = 203;
+			this.y = 403;
 		}, 300);
 	}
 }
